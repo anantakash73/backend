@@ -15,7 +15,8 @@ const appStartup = async (): Promise<void> => {
   // create a server
   app.get("/api/recipe/:recipeId", recipeMiddleware)
   const httpServer = new http.Server(app)
-  httpServer.listen({port: process.env.PORT || 4000}, "0.0.0.0", () => {
+  const port = parseInt(process.env.PORT) || 4000
+  httpServer.listen( port, "0.0.0.0", () => {
     console.log("now running on 4000")
   })
 }
